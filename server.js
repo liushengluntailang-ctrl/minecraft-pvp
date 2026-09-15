@@ -129,7 +129,7 @@ io.on("connection", (socket) => {
   socket.on("disconnect", leave);
 });
 
-// ポート起動
+// ポート起動（Deno Deploy環境対応）
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
