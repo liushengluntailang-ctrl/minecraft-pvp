@@ -1,9 +1,9 @@
-const express = require("express");
-const http = require("http");
-const { Server } = require("socket.io");
+import express from "npm:express@4";
+import { createServer } from "node:http";
+import { Server } from "npm:socket.io@4";
 
 const app = express();
-const server = http.createServer(app);
+const server = createServer(app);
 
 // CORS全許可（Chromebookからの通信を完全許可）
 const io = new Server(server, {
@@ -129,7 +129,7 @@ io.on("connection", (socket) => {
   socket.on("disconnect", leave);
 });
 
-// ポート起動（Deno Deploy対応）
+// ポート起動
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
